@@ -18,6 +18,7 @@ const nthTriangleNumber = (n, sum = 0) =>
   n === 0
     ? sum
     : () => nthTriangleNumber(n - 1, sum + n)
+    
 const trampoline = recursiveFunction =>
   ((...args) => {
     let result = recursiveFunction(...args)
