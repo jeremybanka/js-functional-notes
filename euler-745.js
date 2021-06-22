@@ -13,7 +13,7 @@ const n = parseInt(x, 10)
 // g(1) + g(2) + g(2) ... + g(10)
 // 1 1 1 4 1 1 1 4 9 1
 
-const num = true ? 3 : 4
+const num = true ? 3 : 4 // 3
 
 const checkDivisibilityBySquares = (number, upperLimitSquareRoot) => {
   let highestSquare = 1
@@ -31,7 +31,7 @@ const checkDivisibilityBySquares = (number, upperLimitSquareRoot) => {
 
 const checkSquareFactorsOfNumber = number => {
   const recursiveFactorChecker = upperLimitSquareRoot => {
-    console.log(recursiveFactorChecker)
+    // console.log(recursiveFactorChecker)
     const maybeSquareFactor = upperLimitSquareRoot ** 2
     const remainder = number % maybeSquareFactor
     const isSquareFactor = remainder === 0
@@ -53,9 +53,18 @@ const getHighestSquareFactor = number => {
 
 const trampoline = recursiveFunction =>
   ((...args) => {
+    console.log(recursiveFunction, typeof recursiveFunction)
     let result = recursiveFunction(...args)
     while (result.call) result = result()
     return result
   })()
+
+const sumOfSquares = number => {
+  let sum = 0
+  for (let i = 1; i <= number; i++) {
+    sum += getHighestSquareFactor(i)
+  }
+  return sum
+}
 
 console.log(getHighestSquareFactor(n))
